@@ -7,10 +7,11 @@ WITH CTE AS
 
     {{day_type('started_at')}} AS DAY_TYPE,
 
-    {{get_season('started_at')}} AS SEASON_OF_YEAR,
+    {{get_season('started_at')}} AS STATION_OF_YEAR,
 
     {{function1('started_at')}} as HISTORY
     FROM {{ source('demo', 'bike') }}
+    
 )
 select * from CTE
 
