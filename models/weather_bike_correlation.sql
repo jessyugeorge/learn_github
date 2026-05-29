@@ -1,8 +1,11 @@
 WITH CTE AS
 (
     SELECT 
-    * 
-    FROM {{ ref('trip_fact') }}
-    limit 10
+    t.* ,
+    w.*
+    FROM {{ ref('trip_fact') }} t
+    LEFT JOIN {{ ref('daily_weather') }} w 
+    on t.trip_date=w.daily_weather
+    
 )
 select * from CTE
